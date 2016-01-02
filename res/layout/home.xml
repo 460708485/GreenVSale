@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="@drawable/title_bak"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/home_title"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            />
+        
+    </RelativeLayout>
+    
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="140dip"  
+        >
+        
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/vp"
+            ></android.support.v4.view.ViewPager>
+        
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="35dip"
+        android:orientation="vertical"
+      	android:layout_gravity="bottom"
+      	android:gravity="center"
+        android:background="#33000000"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中国家庭院校园区域名字体现"
+            android:textColor="#ffffff" />
+		
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="3dip"
+            >
+            <View 
+                android:id="@+id/v_dot0"
+                style="@style/dot_style"
+                android:background="@drawable/dot_focus"
+                />
+            <View 
+                android:id="@+id/v_dot1"
+                style="@style/dot_style"
+                />
+            <View 
+                android:id="@+id/v_dot2"
+                style="@style/dot_style"
+                />
+            <View 
+                android:id="@+id/v_dot3"
+                style="@style/dot_style"
+                />
+            <View 
+                android:id="@+id/v_dot4"
+                style="@style/dot_style"
+                />
+            
+            
+            
+        </LinearLayout>
+		
+    </LinearLayout>
+
+    </FrameLayout>
+    
+ 	<GridView 
+ 	    android:id="@+id/gridview"
+ 	    android:layout_width="wrap_content"
+ 	    android:layout_height="wrap_content"
+ 	    android:numColumns="auto_fit"
+ 	    android:verticalSpacing="5dp"
+ 	    android:horizontalSpacing="5dp"
+ 	    android:columnWidth="90dp"
+ 	    android:stretchMode="columnWidth"
+ 	    android:gravity="center"
+ 	    
+ 	    ></GridView>
+
+</LinearLayout>
