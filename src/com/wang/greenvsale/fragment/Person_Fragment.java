@@ -45,11 +45,11 @@ public class Person_Fragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				if(validate()){
-					if(loginPro()){
+					
 						Intent intent=new Intent(getActivity(),MainActivity.class);
 						startActivity(intent);
 						getActivity().finish();
-					}
+				
 					
 				}
 				
@@ -85,32 +85,5 @@ public class Person_Fragment extends Fragment{
 		
 	}
 	
-	//判断输入的是否匹配
-	public boolean loginPro(){
-		// 获取用户输入的用户名、密码
-		String username = et_userName.getText().toString();
-		String pwd = et_userPass.getText().toString();
-		JSONObject jsonObj;
-		try{
-			jsonObj=query(username,pwd);
-			if(jsonObj.getInt("status")==0){
-				return true;
-			}
-			
-		}catch(Exception e){
-			DialogUtil.showDialog(getActivity()
-					, "服务器响应异常，请稍后再试！", false);
-			e.printStackTrace();
-		}
-		return false;
-	}
 	
-	private JSONObject query(String username,String password) throws JSONException, InterruptedException, ExecutionException{
-		Map<String,String> map=new HashMap<String, String>();
-		map.put("username", username);
-		map.put("password", password);
-		String url=HttpUtil.BASE_URL+"user/login.do";
-		
-		return new JSONObject(HttpUtil.postRequest(url, map));
-	}
 }

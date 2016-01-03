@@ -17,80 +17,51 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+/*
+ * 网络连接工具类
+ */
 public class HttpUtil {
-	//创建HttpClient对象
-	public static HttpClient httpClient=new DefaultHttpClient();
-	//服务器地址
-	public static final String BASE_URL="http://localhost:8080/GVSaleService/";
 	
 	/**
-	 * get请求
-	 * @param url 发送url请求
-	 * @return json数据
-	 * @throws ExecutionException 
-	 * @throws InterruptedException 
-	 */
-	public static String getRequest(final String url) throws InterruptedException, ExecutionException{
-		FutureTask<String> task=new FutureTask<String>(new Callable<String>() {
-
-			@Override
-			public String call() throws Exception {
-				//创建HttpGet对象
-				HttpGet get=new HttpGet();
-				//发送get请求
-				HttpResponse httpResponse=httpClient.execute(get);
-				//如果服务器成功地响应
-				if(httpResponse.getStatusLine().getStatusCode()==200){
-					//获取服务器响应的字符串
-					String result=EntityUtils.toString(httpResponse.getEntity());
-					
-					return result;
-				}
-				return null;
-			}
-		});
-		new Thread(task).start();
-		return task.get();
-	}
-	
-	/**
-	 * post请求
-	 * @param url
-	 * @param params
+	 * 通过泛型将json转化为对象
+	 * @param jsonString
+	 * @param cls
 	 * @return
-	 * @throws ExecutionException 
-	 * @throws InterruptedException 
 	 */
-	public static String postRequest(final String url,final Map<String,String> params) throws InterruptedException, ExecutionException{
-		FutureTask<String> task=new FutureTask<String>(new Callable<String>() {
-
+	 public static <T> List<T> getObject(final Class<T> cls,String url,RequestParams params) {
+		final List<T> t=new ArrayList<T>();
+		HttpUtils http=new HttpUtils();
+//		RequestParams  params=new RequestParams();
+//		params.addQueryStringParameter("id", "1");
+		http.send(HttpMethod.POST, url, params, new RequestCallBack<String>() {
+			
 			@Override
-			public String call() throws Exception {
-				HttpPost post=new HttpPost();
-				List<NameValuePair> parms=new ArrayList<NameValuePair>();
-				for(String key:params.keySet()){
-					//封装请求参数
-					parms.add(new BasicNameValuePair(key, params.get(key)));
-				}
-				//设置请求参数
-				post.setEntity(new UrlEncodedFormEntity(parms,"gbk"));
-				//发送post请求
-				HttpResponse response =httpClient.execute(post);
-				if(response.getStatusLine().getStatusCode()==200){
-					//获取服务器响应的字符串
-					String result=EntityUtils.toString(response.getEntity());
-					return result;
-				}
-				return null;
+			public void onFailure(HttpException arg0, String arg1) {
+				Log.i("error", "获取数据失败");
 			}
-			
-			
+
+			public void onSuccess(ResponseInfo<String> info) {
+				Gson gson=new Gson();
+				
+				t.add(gson.fromJson(info.result, cls));
+				
+			}
 		});
-		
-		new Thread(task).start();
-		return task.get();
-		
-		
-	}
+		return t;
+	 }
+	 
+	 
+	 
+	 
 	
 }

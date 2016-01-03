@@ -122,18 +122,19 @@ public final class R {
         public static final int widget_edit_block_bg_normal=0x7f02003a;
     }
     public static final class id {
-        public static final int action_settings=0x7f07001b;
-        public static final int bt_login=0x7f070017;
-        public static final int bt_regist=0x7f070018;
-        public static final int content_btn=0x7f070012;
-        public static final int expandtab_view=0x7f070010;
+        public static final int action_settings=0x7f07001c;
+        public static final int bt_login=0x7f070018;
+        public static final int bt_regist=0x7f070019;
+        public static final int content_btn=0x7f070013;
+        public static final int expandtab_view=0x7f070011;
         public static final int gridview=0x7f07000f;
-        public static final int listView=0x7f070019;
-        public static final int listView2=0x7f07001a;
-        public static final int login_name_edit=0x7f070014;
-        public static final int login_name_layout=0x7f070013;
-        public static final int login_pwd_edit=0x7f070016;
-        public static final int login_pwd_layout=0x7f070015;
+        public static final int listView=0x7f07001a;
+        public static final int listView2=0x7f07001b;
+        public static final int list_title=0x7f070010;
+        public static final int login_name_edit=0x7f070015;
+        public static final int login_name_layout=0x7f070014;
+        public static final int login_pwd_edit=0x7f070017;
+        public static final int login_pwd_layout=0x7f070016;
         public static final int main_radio=0x7f070000;
         public static final int radio_button0=0x7f070001;
         public static final int radio_button1=0x7f070002;
@@ -141,7 +142,7 @@ public final class R {
         public static final int radio_button3=0x7f070004;
         public static final int radio_button4=0x7f070005;
         public static final int realtabcontent=0x7f070006;
-        public static final int show=0x7f070011;
+        public static final int show=0x7f070012;
         public static final int tab_rg_menu=0x7f070007;
         public static final int tv_title=0x7f070009;
         public static final int v_dot0=0x7f07000a;
@@ -175,15 +176,16 @@ public final class R {
         /**  底部 
          */
         public static final int list=0x7f080004;
+        public static final int list_title=0x7f080012;
         /**  个人中心相关的字符串 
          */
-        public static final int login_dialog=0x7f080012;
-        public static final int login_name=0x7f080013;
-        public static final int login_pwd=0x7f080014;
+        public static final int login_dialog=0x7f080013;
+        public static final int login_name=0x7f080014;
+        public static final int login_pwd=0x7f080015;
         public static final int main_friends=0x7f080008;
         public static final int main_home=0x7f080005;
         public static final int more=0x7f080006;
-        public static final int no_data=0x7f080015;
+        public static final int no_data=0x7f080016;
         public static final int register=0x7f080010;
         public static final int rg_againpass=0x7f08000b;
         public static final int rg_email=0x7f08000d;

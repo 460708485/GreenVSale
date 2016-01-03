@@ -66,7 +66,7 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 	}
 
 	/**
-	 * 设置tabitem的个数和初始zhi
+	 * 设置tabitem的个数和初始值
 	 */
 	public void setValue(ArrayList<String> textArray, ArrayList<View> viewArray) {
 		if (mContext == null) {
@@ -77,10 +77,14 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 		for (int i = 0; i < viewArray.size(); i++) {
 			final RelativeLayout r = new RelativeLayout(mContext);
 			int maxHeight = (int) (displayHeight * 0.7);
-			RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, maxHeight);
+			RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, maxHeight);
 			rl.leftMargin = 10;
 			rl.rightMargin = 10;
-			r.addView(viewArray.get(i), rl);
+			View v=viewArray.get(i);
+			if(v.getParent()!=null){
+				((ViewGroup)v.getParent()).removeAllViewsInLayout();
+			}
+			r.addView(v, rl);
 			mViewArray.add(r);
 			r.setTag(SMALL);
 			ToggleButton tButton = (ToggleButton) inflater.inflate(R.layout.toggle_button, this, false);
@@ -93,7 +97,8 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 			}
 			mToggleButton.add(tButton);
 			tButton.setTag(i);
-			tButton.setText(mTextArray.get(i));
+			if(i>=3){return;}
+			//tButton.setText(mTextArray.get(i));
 
 			r.setOnClickListener(new OnClickListener() {
 				@Override

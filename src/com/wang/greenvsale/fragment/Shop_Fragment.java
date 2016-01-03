@@ -109,6 +109,11 @@ public class Shop_Fragment extends Fragment {
 		}
 		return -1;
 	}
+	@Override
+	public void onDestroy() {
+		
+		super.onDestroy();
+	}
 
 
 	
